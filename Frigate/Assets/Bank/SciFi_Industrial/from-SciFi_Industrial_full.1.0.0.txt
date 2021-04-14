@@ -1,3 +1,0 @@
-﻿{
-	"name": "SciFi_Industrial.1.0.0"
-}
