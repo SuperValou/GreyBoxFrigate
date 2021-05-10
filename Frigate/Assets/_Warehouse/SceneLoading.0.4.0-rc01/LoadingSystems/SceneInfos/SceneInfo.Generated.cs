@@ -18,7 +18,7 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 			{SceneId._02_AirLockAccess, new SceneInfo(SceneId._02_AirLockAccess, "02-AirLockAccess", SceneType.Room)},
 			{SceneId._03_AirLock, new SceneInfo(SceneId._03_AirLock, "03-AirLock", SceneType.Room)},
 			{SceneId.Gameplay, new SceneInfo(SceneId.Gameplay, "Gameplay", SceneType.Gameplay)},
-			{SceneId.MainMenu, new SceneInfo(SceneId.MainMenu, "MainMenu", SceneType.Room)},
+			{SceneId.MainMenu, new SceneInfo(SceneId.MainMenu, "MainMenu", SceneType.Screen)},
 			{SceneId.MasterFrigate, new SceneInfo(SceneId.MasterFrigate, "MasterFrigate", SceneType.Master)},
 			{SceneId.VentilationShaft, new SceneInfo(SceneId.VentilationShaft, "VentilationShaft", SceneType.Room)},
 			            

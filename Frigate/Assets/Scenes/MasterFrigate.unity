@@ -439,5 +439,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayToLoad: 0
-  firstRoomToLoad: 20000
+  firstRoomToLoad: 20001
   sceneLoadingManager: {fileID: 946106972}
