@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 9951d09c7c7795347ab99fb269fedf5d
-labels:
-- Scene-Room
-DefaultImporter:
+guid: facb43d2d965eba44b031cdf38f2bb5b
+TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

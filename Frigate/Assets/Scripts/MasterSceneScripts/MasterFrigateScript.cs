@@ -11,10 +11,10 @@ namespace Assets.Scripts.MasterSceneScripts
         // -- Editor
 
         [Header("Values")]
-        [GameplayId]
+        [RestrictedSceneId(SceneType.Gameplay)]
         public SceneId gameplayToLoad;
 
-        [RoomId]
+        [RestrictedSceneId(SceneType.Room)]
         public SceneId firstRoomToLoad;
 
         [Header("References")]
