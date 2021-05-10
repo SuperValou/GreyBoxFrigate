@@ -3,12 +3,17 @@
     "references": [
         "GUID:517079b27cb427545a95928a5c18837b"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
+    "precompiledReferences": [
+        ""
+    ],
+    "autoReferenced": false,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
