@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 5
   triggeringTag: Player
-  doorSet: {fileID: 0}
+  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
 --- !u!95 &7596392582645291027
 Animator:
   serializedVersion: 3
