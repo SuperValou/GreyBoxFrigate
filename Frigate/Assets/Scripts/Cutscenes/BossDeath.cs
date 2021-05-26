@@ -6,13 +6,13 @@ namespace Assets.Scripts.Cutscenes
     public class BossDeath : MonoBehaviour
     {
         // -- Editor
-        public PlayerProxy playerProxy;
+        public PlayerSharedData playerSharedData;
 
         // -- Class
 
         public void Activate()
         {
-            playerProxy.SetInvulnerability(isInvulnerable: true);
+            playerSharedData.IsInvulnerable = true;
 
         }
     }

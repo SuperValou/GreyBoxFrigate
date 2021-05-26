@@ -30,7 +30,8 @@ namespace Assets.Scripts.Foes.Turrets
         [Header("Parts")] public Transform pivot;
         public ProjectileEmitter projectileEmitter;
 
-        [Header("References")] public PlayerProxy playerProxy;
+        [Header("References")]
+        public PlayerSharedData playerProxy;
 
 
         // -- Class
@@ -45,7 +46,8 @@ namespace Assets.Scripts.Foes.Turrets
             base.Start();
             _waitForNextBullet = new WaitForSeconds(bulletDelay);
 
-            Target = playerProxy.transform;
+            // TODO: fix
+            //Target = playerProxy.transform;
         }
 
         public override void AlertUpdate()

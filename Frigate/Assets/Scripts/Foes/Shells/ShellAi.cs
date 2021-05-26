@@ -29,7 +29,7 @@ namespace Assets.Scripts.Foes.Shells
         public ProjectileEmitter laserWallEmitter;
 
         [Header("References")]
-        public PlayerProxy playerProxy;
+        public PlayerSharedData playerProxy;
 
 
         // -- Class
@@ -88,7 +88,7 @@ namespace Assets.Scripts.Foes.Shells
         public void IdleUpdate()
         {
             // Rotate towards player
-            Vector3 targetDirection = playerProxy.transform.position - this.transform.position;
+            Vector3 targetDirection = playerProxy.Position - this.transform.position;
             Vector3 projectedTargetDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
             Quaternion fullRotation = Quaternion.LookRotation(projectedTargetDirection, Vector3.up);
             

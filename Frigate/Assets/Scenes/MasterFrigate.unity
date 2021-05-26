@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLoadedRooms: 2
   sceneLoadingManager: {fileID: 946106972}
+  <PlayerCurrentRoomId>k__BackingField: -1
 --- !u!1 &508439171
 GameObject:
   m_ObjectHideFlags: 0

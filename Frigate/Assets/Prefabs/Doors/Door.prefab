@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 5
   triggeringTag: Player
-  doorManagerProxy: {fileID: 0}
+  doorSet: {fileID: 0}
 --- !u!95 &7596392582645291027
 Animator:
   serializedVersion: 3
