@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.TypewriterEffects;
 using Assets.Scripts.TypewriterEffects.Notifiables;
+using Assets.Scripts.Utilities;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Huds
 {
@@ -18,56 +17,40 @@ namespace Assets.Scripts.Huds
         [Header("Parts")]
         public TypewriterAnimator typewriterAnimator;
 
+        [Header("References")]
+        public SharedStringQueue messageQueue;
+
         // -- Class
-        private readonly object _lock = new object();
-        private readonly Queue<string> _queue = new Queue<string>();
+
+        private bool _isDisplaying;
 
         void Start()
         {
-            // TODO: move to TutoRoomScript
-            this.DisplayMessage("Use <anim:wave>\u243E</anim> to look around.");
-            this.DisplayMessage("Use <anim:blink>ZQSD</anim> to move.");
-            this.DisplayMessage("Press <anim:blink>space</anim> to jump.");
+            // TODO: add a Clear method
+            typewriterAnimator.Animate(string.Empty);
         }
 
-        public void DisplayMessage(string message)
+        void Update()
         {
+            if (_isDisplaying)
+            {
+                return;
+            }
+
+            if (!messageQueue.TryDequeue(out string message))
+            {
+                return;
+            }
+
             if (message == null)
             {
                 throw new ArgumentNullException(nameof(message));
             }
 
-            bool shouldDisplay;
-            lock (_lock)
-            {
-                _queue.Enqueue(message);
-                shouldDisplay = _queue.Count == 1;
-            }
-
-            if (shouldDisplay)
-            {
-                DisplayNextMessage();
-            }
+            typewriterAnimator.Animate(message);
+            _isDisplaying = true;
         }
-
-        private void DisplayNextMessage()
-        {
-            string text;
-            lock (_lock)
-            {
-                if (_queue.Count == 0)
-                {
-                    // TODO: add a Clear() method or smth
-                    typewriterAnimator.Animate(string.Empty);
-                    return;
-                }
-
-                text = _queue.Peek();
-            }
-            
-            typewriterAnimator.Animate(text);
-        }
-
+        
         public void OnTypingBegin()
         {
             // do nothing
@@ -80,17 +63,16 @@ namespace Assets.Scripts.Huds
 
         public void OnTypingEnd()
         {
-            lock (_lock)
-            {
-                if (_queue.Count == 0)
-                {
-                    return;
-                }
+            StartCoroutine(Delay());
+        }
 
-                _queue.Dequeue();
-            }
+        private IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(delayBetweenMessages);
 
-            Invoke(nameof(DisplayNextMessage), delayBetweenMessages);
+            // TODO: add a Clear() method
+            typewriterAnimator.Animate(string.Empty);
+            _isDisplaying = false;
         }
     }
 }

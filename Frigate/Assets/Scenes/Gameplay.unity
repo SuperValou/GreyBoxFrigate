@@ -36035,6 +36035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenMessages: 3
   typewriterAnimator: {fileID: 581665482}
+  messageQueue: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
 --- !u!1 &809828158
 GameObject:
   m_ObjectHideFlags: 0
