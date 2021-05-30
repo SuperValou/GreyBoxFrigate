@@ -16,6 +16,12 @@ namespace Assets.Scripts.SceneScripts
         [Tooltip("Minimal movement the player has to make to consider she knows how to look around (degrees).")]
         public float minPlayerRotation = 45;
 
+        [TextArea(minLines:5, maxLines:20)]
+        public string movementText = "Move.";
+
+        [TextArea(minLines: 5, maxLines: 20)]
+        public string lookAroundText = "Look around.";
+
         [Header("References")]
         public PlayerSharedData playerSharedData;
         public SharedString sharedMessage;
@@ -27,17 +33,22 @@ namespace Assets.Scripts.SceneScripts
             var playerInitialPosition = playerSharedData.Position;
             var playerInitialRotation = playerSharedData.Rotation;
 
-            sharedMessage.Set("Move with <size=120%><anim:blink>ZQSD</anim></size>.");
+            sharedMessage.Set(movementText);
             while (Vector3.Distance(playerInitialPosition, playerSharedData.Position) < minPlayerMovement)
             {
                 yield return null;
             }
 
-            sharedMessage.Set("Look around with <size=150%><anim:wave>\u243E</anim></size>.");
-            // TODO: while not enough rotated
-            yield return new WaitForSeconds(5);
+            sharedMessage.Set(lookAroundText);
+            while (Quaternion.Angle(playerInitialRotation, playerSharedData.Rotation) < minPlayerRotation)
+            {
+                yield return null;
+            }
 
-            sharedMessage.Reset();
+            if (sharedMessage.Value == lookAroundText)
+            {
+                sharedMessage.Reset();
+            }
         }
     }
 }
