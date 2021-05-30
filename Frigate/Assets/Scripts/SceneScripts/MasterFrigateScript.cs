@@ -4,7 +4,7 @@ using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
-namespace Assets.Scripts.MasterSceneScripts
+namespace Assets.Scripts.SceneScripts
 {
     public class MasterFrigateScript : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Utilities;
+﻿using Assets.Scripts.CrossSceneData;
 using UnityEngine;
 
-namespace Assets.Scripts.RoomScripts
+namespace Assets.Scripts.Environments
 {
     public class MessageTrigger : MonoBehaviour
     {
@@ -12,17 +12,9 @@ namespace Assets.Scripts.RoomScripts
         public string triggeringTag = "Player";
 
         [Header("References")]
-        [Tooltip(nameof(ISharedValueIn<string>))]
-        public Object sharedMessage;
+        public SharedString sharedMessage;
 
         // -- Class
-
-        private ISharedValueIn<string> _message;
-        
-        void Start()
-        {
-            _message = (ISharedValueIn<string>) sharedMessage;
-        }
 
         void OnTriggerEnter(Collider col)
         {
@@ -31,7 +23,7 @@ namespace Assets.Scripts.RoomScripts
                 return;
             }
 
-            _message.Set(messageToDisplay);
+            sharedMessage.Set(messageToDisplay);
         }
 
         void OnTriggerExit(Collider col)
@@ -41,7 +33,7 @@ namespace Assets.Scripts.RoomScripts
                 return;
             }
 
-            _message.Reset();
+            sharedMessage.Reset();
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 
-namespace Assets.Scripts.Utilities
+namespace Assets.Scripts.CrossSceneData
 {
     [CreateAssetMenu(fileName = nameof(SharedString), menuName = "CrossSceneObjects/" + nameof(SharedString))]
-    public class SharedString : ScriptableObject, ISharedValueIn<string>, ISharedValueOut<string>
+    public class SharedString : ScriptableObject
     {
         [SerializeField]
         private string _value = string.Empty;

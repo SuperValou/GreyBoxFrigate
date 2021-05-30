@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.RoomScripts
+namespace Assets.Scripts.SceneScripts
 {
     public class TutoRoomScript : MonoBehaviour
     {
