@@ -3971,6 +3971,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6676bdd1bcae8774889d24886812882e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPlayerMovement: 1
+  minPlayerRotation: 45
+  playerSharedData: {fileID: 11400000, guid: 36d75a84398edd241ac2166a62853695, type: 2}
+  sharedMessage: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
 --- !u!4 &962965133
 Transform:
   m_ObjectHideFlags: 0

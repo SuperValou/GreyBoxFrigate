@@ -66467,7 +66467,7 @@ GameObject:
   - component: {fileID: 1863772005}
   - component: {fileID: 1863772006}
   m_Layer: 0
-  m_Name: PlayerPositionTracker
+  m_Name: PlayerTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Players
 {
-    public class PlayerPositionTracker : MonoBehaviour
+    public class PlayerTracker : MonoBehaviour
     {
         // -- Editor
 
@@ -12,9 +12,16 @@ namespace Assets.Scripts.Players
 
         // -- Class
 
+        void Awake()
+        {
+            playerSharedData.Position = player.transform.position;
+            playerSharedData.Rotation = player.transform.rotation;
+        }
+
         void Update()
         {
             playerSharedData.Position = player.transform.position;
+            playerSharedData.Rotation = player.transform.rotation;
         }
     }
 }
