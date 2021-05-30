@@ -4664,7 +4664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageToDisplay: Press <anim:blink>space</anim> to jump.
-  messageQueue: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
+  triggeringTag: Player
+  sharedMessage: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
 --- !u!65 &1576661756
 BoxCollider:
   m_ObjectHideFlags: 0

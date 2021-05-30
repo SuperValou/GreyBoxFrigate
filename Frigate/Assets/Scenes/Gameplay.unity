@@ -30759,7 +30759,6 @@ MonoBehaviour:
   fadeOutDuration: 1
   textBox: {fileID: 728422354}
   typingNotifiables:
-  - {fileID: 760453438}
   - {fileID: 1690862507}
 --- !u!4 &581665483
 Transform:
@@ -36033,9 +36032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfdb071331fea94bb515c10c444c7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenMessages: 3
   typewriterAnimator: {fileID: 581665482}
-  messageQueue: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
+  message: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
 --- !u!1 &809828158
 GameObject:
   m_ObjectHideFlags: 0
