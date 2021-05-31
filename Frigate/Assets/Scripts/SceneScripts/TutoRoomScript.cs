@@ -33,19 +33,19 @@ namespace Assets.Scripts.SceneScripts
             var playerInitialPosition = playerSharedData.Position;
             var playerInitialRotation = playerSharedData.Rotation;
 
-            sharedMessage.Set(movementText);
-            while (Vector3.Distance(playerInitialPosition, playerSharedData.Position) < minPlayerMovement)
-            {
-                yield return null;
-            }
-
             sharedMessage.Set(lookAroundText);
             while (Quaternion.Angle(playerInitialRotation, playerSharedData.Rotation) < minPlayerRotation)
             {
                 yield return null;
             }
 
-            if (sharedMessage.Value == lookAroundText)
+            sharedMessage.Set(movementText);
+            while (Vector3.Distance(playerInitialPosition, playerSharedData.Position) < minPlayerMovement)
+            {
+                yield return null;
+            }
+
+            if (sharedMessage.Value == movementText)
             {
                 sharedMessage.Reset();
             }
