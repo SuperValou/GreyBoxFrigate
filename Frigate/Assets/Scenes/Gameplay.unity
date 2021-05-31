@@ -25752,7 +25752,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 33792
   eye: {fileID: 963194227}
-  onLockOnEvents:
+  lockOnTargetSet: {fileID: 11400000, guid: 3ed63b834d4bbeb43b7f0ce46dbcfe61, type: 2}
+  lockOnNotifiables:
   - {fileID: 383359840}
 --- !u!1 &495587285
 GameObject:

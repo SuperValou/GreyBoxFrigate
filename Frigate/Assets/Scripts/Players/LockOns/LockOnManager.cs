@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.CrossSceneData;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.LockOns
@@ -31,14 +32,15 @@ namespace Assets.Scripts.Players.LockOns
         [Header("References")]
         public Camera eye;
 
+        [Tooltip("Set of targetable objects.")]
+        public LockOnTargetSharedSet lockOnTargetSet;
+
         [Tooltip(nameof(ILockOnNotifiable) + " that should be notified when lock/unlock events are occurring.")]
-        public MonoBehaviour[] onLockOnEvents;
+        public MonoBehaviour[] lockOnNotifiables;
 
         // -- Class
 
         private readonly Vector2 _viewportCenter = new Vector3(0.5f, 0.5f);
-
-        private readonly HashSet<LockOnTarget> _lockableTargets = new HashSet<LockOnTarget>();
 
         private readonly ICollection<ILockOnNotifiable> _lockOnNotifiables = new HashSet<ILockOnNotifiable>();
 
@@ -62,7 +64,7 @@ namespace Assets.Scripts.Players.LockOns
         
         void Start()
         {
-            foreach (var monoBehaviour in onLockOnEvents)
+            foreach (var monoBehaviour in lockOnNotifiables)
             {
                 _lockOnNotifiables.Add((ILockOnNotifiable) monoBehaviour);
             }
@@ -88,7 +90,7 @@ namespace Assets.Scripts.Players.LockOns
 
             float minSquaredDistanceToCenter = float.MaxValue;
 
-            foreach (var lockableTarget in _lockableTargets)
+            foreach (var lockableTarget in lockOnTargetSet.Items)
             {
                 Vector3 targetViewportPosition = eye.WorldToViewportPoint(lockableTarget.transform.position);
                 
@@ -302,39 +304,6 @@ namespace Assets.Scripts.Players.LockOns
 
             return false;
         }
-
-        /// <summary>
-        /// Register a <see cref="LockOnTarget"/> into the system (should only be used during <see cref="LockOnTarget"/> initialization)
-        /// </summary>
-        public void Register(LockOnTarget lockOnTarget)
-        {
-            if (lockOnTarget == null)
-            {
-                throw new ArgumentNullException(nameof(lockOnTarget));
-            }
-
-            bool added = _lockableTargets.Add(lockOnTarget);
-            if (!added)
-            {
-                Debug.LogWarning($"{lockOnTarget} ({nameof(LockOnTarget)}) is already registered in {nameof(LockOnManager)}.");
-            }
-        }
-
-        /// <summary>
-        /// Unregister a <see cref="LockOnTarget"/> out of the system (should only be used during <see cref="LockOnTarget"/> end of life)
-        /// </summary>
-        public void Unregister(LockOnTarget lockOnTarget)
-        {
-            if (lockOnTarget == null)
-            {
-                throw new ArgumentNullException(nameof(lockOnTarget));
-            }
-
-            bool removed = _lockableTargets.Remove(lockOnTarget);
-            if (!removed)
-            {
-                Debug.LogWarning($"{lockOnTarget} ({nameof(LockOnTarget)}) was not registered in {nameof(LockOnManager)} in the first place.");
-            }
-        }
+        
     }
 }

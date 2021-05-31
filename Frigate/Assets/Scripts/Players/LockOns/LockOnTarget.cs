@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.CrossSceneData;
+using UnityEngine;
 
 namespace Assets.Scripts.Players.LockOns
 {
@@ -6,18 +7,18 @@ namespace Assets.Scripts.Players.LockOns
     {
         // -- Editor
 
-        public LockOnManagerProxy lockOnManagerProxy;
+        public LockOnTargetSharedSet lockOnSet;
 
         // -- Class
 
         void Start()
         {
-            lockOnManagerProxy.Register(this);
+            lockOnSet.Add(this);
         }
 
         void OnDestroy()
         {
-            lockOnManagerProxy.Unregister(this);
+            lockOnSet.Remove(this);
         }
     }
 }
