@@ -33,6 +33,18 @@ namespace Assets.Scripts.Damages
             {
                 _damageNotifiables.Add((IDamageNotifiable) monoBehaviour);
             }
+
+            var weakpoints = this.GetComponentsInChildren<VulnerableCollider>();
+            if (weakpoints.Length == 0)
+            {
+                Debug.LogWarning($"No {nameof(VulnerableCollider)} was found in {this.name} ({this.GetType().Name}). " +
+                                 $"It probably makes it unable to be damaged.");
+            }
+
+            foreach (var vulnerableCollider in weakpoints)
+            {
+                vulnerableCollider.Hit += TakeDamage; // event unsubscription occurs in VulnerableCollider.OnDestroy()
+            }
         }
 
         public void TakeDamage(VulnerableCollider vulnerableCollider, DamageData damageData, MonoBehaviour damager)

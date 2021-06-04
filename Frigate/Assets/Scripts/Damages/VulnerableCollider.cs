@@ -9,22 +9,17 @@ namespace Assets.Scripts.Damages
         // -- Editor
 
         [Header("Values")]
-        public float damageMultiplier = 1f;
-
-        [Header("Parts")]
-        public Damageable parentDamageable;
+        public float damageMultiplier = 1f; // TODO: encapsulate data into scriptable object
         
         // -- Class
         
         public Collider Collider { get; private set; }
         
+        public event Action<VulnerableCollider, DamageData, MonoBehaviour> Hit;
+
         void Start()
         {
             Collider = this.GetOrThrow<Collider>();
-            if (parentDamageable == null)
-            {
-                throw new ArgumentException($"{nameof(parentDamageable)} is null. Damage messages will be lost.");
-            }
         }
         
         public void OnHit(DamageData damageData, MonoBehaviour damager)
@@ -32,7 +27,13 @@ namespace Assets.Scripts.Damages
             float amountResult = damageMultiplier * damageData.Amount;
             var damageResult = new DamageData(amountResult);
 
-            parentDamageable.TakeDamage(vulnerableCollider:this, damageResult, damager);
+            Hit.SafeInvoke(this, damageResult, damager);
+        }
+
+        void OnDestroy()
+        {
+            // clear subscribers
+            Hit = null;
         }
     }
 }
