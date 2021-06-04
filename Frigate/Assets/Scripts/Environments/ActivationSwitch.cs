@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Environments
 {
@@ -6,21 +7,31 @@ namespace Assets.Scripts.Environments
     {
         // -- Editor
 
-        public bool initialState = false;
-        
+        [SerializeField]
+        private bool _state = false;
+
+        public UnityEvent onTurnedOn;
+        public UnityEvent onTurnedOff;
+        public UnityEvent onFlipped;
+
         // -- Class
 
-        public bool IsTurnedOn { get; private set; }
-        public bool IsTurnedOff => !IsTurnedOn;
+        public bool IsTurnedOn => _state;
+        public bool IsTurnedOff => !_state;
         
-        void Awake()
-        {
-            IsTurnedOn = initialState;
-        }
-
         public void Flip()
         {
-            IsTurnedOn = !IsTurnedOn;
+            _state = !_state;
+            onFlipped.Invoke();
+
+            if (_state)
+            {
+                onTurnedOn.Invoke();
+            }
+            else
+            {
+                onTurnedOff.Invoke();
+            }
         }
     }
 }

@@ -8,9 +8,12 @@ namespace Assets.Scripts.Damages
     {
         // -- Editor
 
-        public Damageable parentDamageable;
+        [Header("Values")]
         public float damageMultiplier = 1f;
 
+        [Header("Parts")]
+        public Damageable parentDamageable;
+        
         // -- Class
         
         public Collider Collider { get; private set; }
