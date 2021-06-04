@@ -16,7 +16,7 @@ namespace Assets.Scripts.Utilities
             var component = monoBehaviour.GetComponent<TComponent>();
             if (component == null)
             {
-                throw new ArgumentException($"Missing '{typeof(TComponent).Name}' component on '{monoBehaviour.gameObject}' game object.");
+                throw new ArgumentException($"Missing '{typeof(TComponent).Name}' component on '{monoBehaviour.name} ({monoBehaviour.GetType().Name})' game object.");
             }
 
             return component;

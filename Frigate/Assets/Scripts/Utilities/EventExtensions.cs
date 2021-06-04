@@ -76,5 +76,41 @@ namespace Assets.Scripts.Utilities
             }
 
         }
+
+        public static void SafeInvoke<TEventArg1, TEventArg2, TEventArg3>(this Action<TEventArg1, TEventArg2, TEventArg3> eventToInvoke,
+            TEventArg1 eventArg1, TEventArg2 eventArg2, TEventArg3 eventArg3)
+        {
+            if (eventToInvoke == null)
+            {
+                return;
+            }
+
+            var invocationList = eventToInvoke.GetInvocationList();
+            foreach (var delegateToInvoke in invocationList)
+            {
+                if (delegateToInvoke == null)
+                {
+                    Debug.LogError($"Unable to invoke null delegate registered on event '{eventToInvoke.Method.Name}'.");
+                    continue;
+                }
+
+                var castedDelegate = delegateToInvoke as Action<TEventArg1, TEventArg2, TEventArg3>;
+                if (castedDelegate == null)
+                {
+                    Debug.LogError($"Method '{delegateToInvoke.Method.Name}' of object '{delegateToInvoke.Target}' is registered on event {eventToInvoke.Method.Name}, " +
+                                   $"but it doesn't take 3 parameters of type '{typeof(TEventArg1).Name}', '{typeof(TEventArg2).Name}', and '{typeof(TEventArg3)}'.");
+                    continue;
+                }
+
+                try
+                {
+                    castedDelegate.Invoke(eventArg1, eventArg2, eventArg3);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Exception occured during invocation of method '{castedDelegate.Method.Name}' of object '{castedDelegate.Target}' (registered on event '{eventToInvoke.Method.Name}'): {e}");
+                }
+            }
+        }
     }
 }
