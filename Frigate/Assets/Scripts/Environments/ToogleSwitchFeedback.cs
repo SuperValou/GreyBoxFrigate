@@ -15,7 +15,19 @@ namespace Assets.Scripts.Environments
         public MeshRenderer colorRenderer;
 
         // -- Class
-        
+
+        public void Init(bool initialState)
+        {
+            if (initialState)
+            {
+                TurnOn();
+            }
+            else
+            {
+                TurnOff();
+            }
+        }
+
         public void TurnOn()
         {
             colorRenderer.material.color = enabledColor;

@@ -17,6 +17,7 @@ namespace Assets.Scripts.Environments
         private bool _state = false;
 
         [Header("Events")]
+        public UnityEvent onStart;
         public UnityEvent onTurnedOn;
         public UnityEvent onTurnedOff;
         public UnityEvent onToggle;
@@ -41,6 +42,8 @@ namespace Assets.Scripts.Environments
             }
 
             _vulnerableCollider.Hit += OnHit;
+
+            onStart.Invoke();
         }
 
         public void Toggle()
