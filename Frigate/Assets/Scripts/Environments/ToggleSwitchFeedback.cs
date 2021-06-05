@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Environments
 {
-    public class ToogleSwitchFeedback : MonoBehaviour
+    public class ToggleSwitchFeedback : MonoBehaviour
     {
         // -- Editor
 
