@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Damages;
-using Assets.Scripts.Utilities;
+﻿using System;
+using Assets.Scripts.Damages;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,7 +32,14 @@ namespace Assets.Scripts.Environments
         void Start()
         {
             _hasMaxInteractions = maxInteraction > 0;
-            _vulnerableCollider = this.GetOrThrow<VulnerableCollider>();
+
+            _vulnerableCollider = this.GetComponentInChildren<VulnerableCollider>();
+            if (_vulnerableCollider == null)
+            {
+                throw new ArgumentException($"No {nameof(VulnerableCollider)} was found in {this.name} ({this.GetType().Name}). " +
+                                            $"It makes it unable to be interacted with. Did you forget to add a {nameof(VulnerableCollider)} to one of its children?");
+            }
+
             _vulnerableCollider.Hit += OnHit;
         }
 
