@@ -9,9 +9,11 @@ namespace Assets.Scripts.Editor.Gizmos
         private const string IconName = "counter.png";
 
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
-        private static void DrawTriggerGizmo(Counter counter, GizmoType gizmoType)
+        private static void DrawGizmo(Counter counter, GizmoType gizmoType)
         {
             UnityEngine.Gizmos.DrawIcon(counter.transform.position, IconName, allowScaling: true);
+
+            UnityEventLinkGizmo.DrawGizmo(counter.onCountReached, gizmoType);
         }
     }
 }

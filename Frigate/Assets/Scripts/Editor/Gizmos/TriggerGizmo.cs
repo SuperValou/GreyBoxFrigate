@@ -9,7 +9,7 @@ namespace Assets.Scripts.Editor.Gizmos
         private static readonly Color Color = new Color(r:0, g:1, b:0, a:0.1f);
 
         [DrawGizmo(GizmoType.NonSelected)]
-        private static void DrawTriggerGizmo(Trigger trigger, GizmoType gizmoType)
+        private static void DrawGizmo(Trigger trigger, GizmoType gizmoType)
         {
             UnityEngine.Gizmos.color = Color;
 

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Editor.Gizmos
         private const string IconName = "target.png";
 
         [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
-        private static void DrawTriggerGizmo(LockOnTarget target, GizmoType gizmoType)
+        private static void DrawGizmo(LockOnTarget target, GizmoType gizmoType)
         {
             UnityEngine.Gizmos.DrawIcon(target.transform.position, IconName, allowScaling: true);
         }
