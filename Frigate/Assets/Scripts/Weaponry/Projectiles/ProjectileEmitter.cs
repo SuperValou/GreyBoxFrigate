@@ -48,13 +48,6 @@ namespace Assets.Scripts.Weaponry.Projectiles
             foreach (var collisionEvent in collisionEvents)
             {
                 var otherCollider = collisionEvent.colliderComponent;
-
-                // Switches
-                var activableSwitch = otherCollider.GetComponent<ActivationSwitch>();
-                if (activableSwitch != null)
-                {
-                    activableSwitch.Flip();
-                }
                 
                 // Damages
                 var vulnerableCollider = otherCollider.GetComponent<VulnerableCollider>();
