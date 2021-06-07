@@ -38,7 +38,7 @@ namespace Assets.Scripts.Editor.Gizmos
             _toggleSwitch.DrawGizmo(toggleSwitch, gizmoType);
         }
 
-        [DrawGizmo(GizmoType.NonSelected)]
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         static void DrawGizmo(Trigger trigger, GizmoType gizmoType)
         {
             _trigger.DrawGizmo(trigger, gizmoType);

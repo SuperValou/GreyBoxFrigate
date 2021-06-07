@@ -10,7 +10,7 @@ namespace Assets.Scripts.Editor.Gizmos.Types
     public class ObjectGizmo<TMonoBehaviour>
         where TMonoBehaviour : MonoBehaviour
     {
-        private const float MaxSquaredRenderDistance = 1000;
+        private const float MaxSquaredRenderDistance = 800;
         private const float MinSquaredDistance = 1;
         private const float StackedLabelOffset = 0.25f;
 
@@ -68,9 +68,10 @@ namespace Assets.Scripts.Editor.Gizmos.Types
                     var obj = unityEvent.GetPersistentTarget(i);
                     var methodName = unityEvent.GetPersistentMethodName(i);
 
+                    Vector3 targetPosition;
+
                     if (obj is Component component)
                     {
-                        Vector3 targetPosition;
                         if (component.gameObject == unityEventOwner.gameObject)
                         {
                             targetPosition = unityEventOwner.transform.position - Vector3.up;
@@ -84,17 +85,18 @@ namespace Assets.Scripts.Editor.Gizmos.Types
                                 targetPosition = sourcePostion + Vector3.up + Vector3.right;
                             }
                         }
-
-                        UnityEngine.Gizmos.DrawLine(sourcePostion, targetPosition);
-
-                        string label = $"{unityEventField.Name}->{methodName}";
-                        Vector3 labelPosition = (sourcePostion + targetPosition) / 2f + (i * StackedLabelOffset) * Vector3.down;
-                        Handles.Label(labelPosition, label, labelStyle);
                     }
                     else
                     {
-                        // TODO
+                        targetPosition = unityEventOwner.transform.position + Vector3.up * 2;
+                        Handles.Label(targetPosition, obj.name, labelStyle);
                     }
+
+                    UnityEngine.Gizmos.DrawLine(sourcePostion, targetPosition);
+
+                    string label = $"{unityEventField.Name}->{methodName}";
+                    Vector3 labelPosition = (sourcePostion + targetPosition) / 2f + (i * StackedLabelOffset) * Vector3.down;
+                    Handles.Label(labelPosition, label, labelStyle);
                 }
             }
         }

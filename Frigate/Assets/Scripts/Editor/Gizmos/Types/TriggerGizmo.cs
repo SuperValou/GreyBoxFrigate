@@ -16,16 +16,16 @@ namespace Assets.Scripts.Editor.Gizmos.Types
             if (col is BoxCollider box)
             {
                 UnityEngine.Gizmos.DrawCube(box.transform.position, box.size);
-                return;
             }
-
-            if (col is SphereCollider sphere)
+            else if (col is SphereCollider sphere)
             {
                 UnityEngine.Gizmos.DrawSphere(sphere.transform.position, sphere.radius);
                 return;
             }
-
-            UnityEngine.Gizmos.DrawWireCube(col.transform.position, col.bounds.size);
+            else
+            {
+                UnityEngine.Gizmos.DrawWireCube(col.transform.position, col.bounds.size);
+            }
 
             base.DrawGizmo(trigger, gizmoType);
         }
