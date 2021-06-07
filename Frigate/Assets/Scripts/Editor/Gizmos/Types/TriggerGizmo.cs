@@ -2,14 +2,13 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.Editor.Gizmos
+namespace Assets.Scripts.Editor.Gizmos.Types
 {
-    public static class TriggerGizmo
+    public class TriggerGizmo : ObjectGizmo<Trigger>
     {
-        private static readonly Color Color = new Color(r:0, g:1, b:0, a:0.1f);
+        private readonly Color Color = new Color(r:0, g:1, b:0, a:0.1f);
 
-        [DrawGizmo(GizmoType.NonSelected)]
-        private static void DrawGizmo(Trigger trigger, GizmoType gizmoType)
+        public override void DrawGizmo(Trigger trigger, GizmoType gizmoType)
         {
             UnityEngine.Gizmos.color = Color;
 
@@ -27,6 +26,8 @@ namespace Assets.Scripts.Editor.Gizmos
             }
 
             UnityEngine.Gizmos.DrawWireCube(col.transform.position, col.bounds.size);
+
+            base.DrawGizmo(trigger, gizmoType);
         }
     }
 }
