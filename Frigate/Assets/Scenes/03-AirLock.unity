@@ -131,7 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103334353}
-  m_Layer: 0
+  - component: {fileID: 103334354}
+  m_Layer: 11
   m_Name: DestroyableJunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +154,24 @@ Transform:
   m_Father: {fileID: 1197152157}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &103334354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103334352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24bc9aa47ce4394887a5bf5ad2df6c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  _currentHealth: 0
+  isInvulnerable: 0
+  onDamageReceived: []
+  explosionEmitter: {fileID: 8379618022384908638, guid: 05e49253af24a4547a7b19ce1332c3ee,
+    type: 3}
 --- !u!1 &347348300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1562,8 @@ GameObject:
   - component: {fileID: 1542755770}
   - component: {fileID: 1542755769}
   - component: {fileID: 1542755768}
-  m_Layer: 0
+  - component: {fileID: 1542755771}
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1624,6 +1644,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542755766}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1542755771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542755766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab00277835e8e274a865b62e9993541e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 1
 --- !u!1 &1688594630
 GameObject:
   m_ObjectHideFlags: 0

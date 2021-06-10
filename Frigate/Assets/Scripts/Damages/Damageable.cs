@@ -11,6 +11,9 @@ namespace Assets.Scripts.Damages
         [Tooltip("Maximum amount of damage that can be taken before dying.")]
         public float maxHealth = 20;
 
+        [SerializeField]
+        private float _currentHealth;
+
         [Tooltip("If enabled, damage will be ignored. Usefull to temporarily recover from an attack, or just prevent death.")]
         public bool isInvulnerable = false;
 
@@ -20,8 +23,13 @@ namespace Assets.Scripts.Damages
         // -- Class
 
         private readonly ICollection<IDamageNotifiable> _damageNotifiables = new HashSet<IDamageNotifiable>();
+        
 
-        public float CurrentHealth { get; private set; }
+        public float CurrentHealth
+        {
+            get => _currentHealth;
+            private set => _currentHealth = value;
+        }
 
         public bool IsAlive => CurrentHealth > 0;
 
