@@ -2,13 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.LoadingSystems.Doors;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Rooms
 {
-    public class RoomManager : MonoBehaviour
+    /// <summary>
+    /// Is in charge of loading and unloading rooms.
+    /// </summary>
+    public class RoomLoadingManager : MonoBehaviour
     {
         // -- Editor
 
@@ -16,8 +20,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
         public int maxLoadedRooms = 2;
 
         [Header("References")]
-        public DoorSet doorSet;
-        public PlayerCurrentRoom playerCurrentRoom;
+        public DoorPairing doorPairing;
+        public PersistentRoomId playerCurrentRoomId;
         public SceneLoadingManager sceneLoadingManager;
 
         // -- Class
@@ -28,38 +32,27 @@ namespace Assets.Scripts.LoadingSystems.Rooms
 
         void Start()
         {
-            var doors = doorSet.GetDoors(_doorStates);
-            if (doors.Count == 0)
+            var doors = doorPairing.GetDoors(_doorStates);
+            if (!doors.Any())
             {
                 return;
             }
 
-            if (!Enum.IsDefined(typeof(SceneId), playerCurrentRoom.RoomId))
+            if (Enum.IsDefined(typeof(SceneId), playerCurrentRoomId.Value))
             {
-                // Let's assume the first registered doors are from the room the player is in.
-                // It can potentially be the wrong room under certain conditions, but should be correct most of the time.
-                // Getting close to any door will correct it anyway.
-                playerCurrentRoom.RoomId = doors.First().Key.RoomId;
+                _roomIdsQueue.Enqueue(playerCurrentRoomId.Value);
             }
-            
-            _roomIdsQueue.Enqueue(playerCurrentRoom.RoomId);
         }
 
         void Update()
         {
-            var doors = doorSet.GetDoors(_doorStates);
+            var doors = doorPairing.GetDoors(_doorStates);
             
             foreach (var kvp in doors)
             {
                 IDoor door = kvp.Key;
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
-
-                // Track the room the player is in
-                if (door.PlayerIsAround && door.RoomId != playerCurrentRoom.RoomId)
-                {
-                    playerCurrentRoom.RoomId = door.RoomId;
-                }
-
+                
                 // Opening door
                 if (door.State == DoorState.WaitingToOpen)
                 {
@@ -68,7 +61,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                         if (doorOnTheOtherSide == null)
                         {
                             // there is no door on the other side!
-                            Debug.LogError($"There is no opposite door for '{door}'.");
+                            Debug.LogError($"No back door was found on the other side of '{door}'. " +
+                                           $"Are you sure this door is supposed to lead to '{door.RoomIdOnTheOtherSide}'?");
                             door.OpenInSync();
                         }
                         else
@@ -100,7 +94,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 {
                     if (doorOnTheOtherSide == null)
                     {
-                        Debug.LogError($"There is no opposite door for '{door}'.");
+                        Debug.LogError($"No back door was found on the other side of '{door}'. " +
+                                       $"Are you sure this door is supposed to lead to '{door.RoomIdOnTheOtherSide}'?");
                         door.CloseInSync();
                     }
                     else if (doorOnTheOtherSide.State == DoorState.Open 
@@ -116,7 +111,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
             if (_roomIdsQueue.Count > maxLoadedRooms)
             {
                 SceneId roomIdToUnload = _roomIdsQueue.Dequeue();
-                if (roomIdToUnload == playerCurrentRoom.RoomId)
+                if (roomIdToUnload == playerCurrentRoomId.Value)
                 {
                     EnqueueRoom(roomIdToUnload);
                 }
@@ -126,7 +121,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 }
             }
 
-            this.name = $"Current room: {playerCurrentRoom.RoomId} ({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
+            // TODO: delete this
+            this.name = $"{nameof(RoomLoadingManager)}({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
         }
 
         private void EnqueueRoom(SceneId roomId)
