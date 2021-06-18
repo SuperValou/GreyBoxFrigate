@@ -25618,6 +25618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  _currentHealth: 0
   isInvulnerable: 0
   onDamageReceived:
   - {fileID: 744459935}
@@ -36033,7 +36034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typewriterAnimator: {fileID: 581665482}
-  message: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
+  message: {fileID: 11400000, guid: b030ef26e625fcf479434698be3e1056, type: 2}
 --- !u!1 &809828158
 GameObject:
   m_ObjectHideFlags: 0
@@ -66499,8 +66500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b3bca150b06694794d1e21146da0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 479099066}
-  playerSharedData: {fileID: 11400000, guid: 36d75a84398edd241ac2166a62853695, type: 2}
+  position: {fileID: 11400000, guid: 74c4884cdea60004b8fd867ef04e104e, type: 2}
+  rotation: {fileID: 11400000, guid: af924e9571c90664bac03fd74d39eb5e, type: 2}
+  target: {fileID: 479099067}
 --- !u!1 &1896284264
 GameObject:
   m_ObjectHideFlags: 0

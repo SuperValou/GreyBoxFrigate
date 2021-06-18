@@ -2550,21 +2550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteraction: 1
-  _state: 0
-  onStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303926099}
-        m_MethodName: Init
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onTurnedOn:
     m_PersistentCalls:
       m_Calls:
@@ -2596,6 +2581,8 @@ MonoBehaviour:
   onToggle:
     m_PersistentCalls:
       m_Calls: []
+  _state: 0
+  _interactionCount: 0
 --- !u!114 &303926099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2654,7 +2641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf86085259fb1f489664a6ca3474d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentCount: 0
   countToReach: 2
   lockWhenReached: 1
   onCountReached:
@@ -2671,6 +2657,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _currentCount: 0
 --- !u!1 &347348300
 GameObject:
   m_ObjectHideFlags: 0
@@ -4046,21 +4033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteraction: 1
-  _state: 0
-  onStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 955390858}
-        m_MethodName: Init
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onTurnedOn:
     m_PersistentCalls:
       m_Calls:
@@ -4092,6 +4064,8 @@ MonoBehaviour:
   onToggle:
     m_PersistentCalls:
       m_Calls: []
+  _state: 0
+  _interactionCount: 0
 --- !u!114 &955390858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4174,8 +4148,9 @@ MonoBehaviour:
   movementText: Use <size=120%><anim:blink>ZQSD</anim></size> to move.
   lookAroundText: "Use <size=150%><anim:wave>\u243E</anim></size> to look around
     you."
-  playerSharedData: {fileID: 11400000, guid: 36d75a84398edd241ac2166a62853695, type: 2}
-  sharedMessage: {fileID: 11400000, guid: 4116a0e788098ff4581a70ac6244c115, type: 2}
+  playerPosition: {fileID: 11400000, guid: 74c4884cdea60004b8fd867ef04e104e, type: 2}
+  playerRotation: {fileID: 11400000, guid: af924e9571c90664bac03fd74d39eb5e, type: 2}
+  hudMessage: {fileID: 11400000, guid: b030ef26e625fcf479434698be3e1056, type: 2}
 --- !u!4 &962965133
 Transform:
   m_ObjectHideFlags: 0
@@ -5350,7 +5325,7 @@ PrefabInstance:
     - target: {fileID: 7596392582645291024, guid: 5df1343f19f1ebb438ccb134acd7ebed,
         type: 3}
       propertyPath: m_Name
-      value: Door to 02-AirLockAccess
+      value: BasicDoor to 02-AirLockAccess
       objectReference: {fileID: 0}
     - target: {fileID: 7596392582645291025, guid: 5df1343f19f1ebb438ccb134acd7ebed,
         type: 3}
@@ -5416,6 +5391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: doorManagerProxy
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596392582645291026, guid: 5df1343f19f1ebb438ccb134acd7ebed,
+        type: 3}
+      propertyPath: _roomOnTheOtherSide
+      value: 20002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df1343f19f1ebb438ccb134acd7ebed, type: 3}

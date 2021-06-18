@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 7596392582645291024, guid: 5df1343f19f1ebb438ccb134acd7ebed,
         type: 3}
       propertyPath: m_Name
-      value: Door to 02-AirLockAccess
+      value: BasicDoor to 02-AirLockAccess
       objectReference: {fileID: 0}
     - target: {fileID: 7596392582645291025, guid: 5df1343f19f1ebb438ccb134acd7ebed,
         type: 3}
@@ -589,6 +589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: doorManagerProxy
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596392582645291026, guid: 5df1343f19f1ebb438ccb134acd7ebed,
+        type: 3}
+      propertyPath: _roomOnTheOtherSide
+      value: 20002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df1343f19f1ebb438ccb134acd7ebed, type: 3}
