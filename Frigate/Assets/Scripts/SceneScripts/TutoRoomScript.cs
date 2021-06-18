@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Assets.Scripts.CrossSceneData;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.Players;
 using UnityEngine;
 
@@ -23,31 +23,32 @@ namespace Assets.Scripts.SceneScripts
         public string lookAroundText = "Look around.";
 
         [Header("References")]
-        public PlayerSharedData playerSharedData;
-        public SharedString sharedMessage;
+        public PersistentVector3 playerPosition;
+        public PersistentQuaternion playerRotation;
+        public PersistentString hudMessage;
 
         // -- Class
 
         IEnumerator Start()
         {
-            var playerInitialPosition = playerSharedData.Position;
-            var playerInitialRotation = playerSharedData.Rotation;
+            var playerInitialPosition = playerPosition.Value;
+            var playerInitialRotation = playerRotation.Value;
 
-            sharedMessage.Set(lookAroundText);
-            while (Quaternion.Angle(playerInitialRotation, playerSharedData.Rotation) < minPlayerRotation)
+            hudMessage.Value = lookAroundText;
+            while (Quaternion.Angle(playerInitialRotation, playerRotation.Value) < minPlayerRotation)
             {
                 yield return null;
             }
 
-            sharedMessage.Set(movementText);
-            while (Vector3.Distance(playerInitialPosition, playerSharedData.Position) < minPlayerMovement)
+            hudMessage.Value = movementText;
+            while (Vector3.Distance(playerInitialPosition, playerPosition.Value) < minPlayerMovement)
             {
                 yield return null;
             }
 
-            if (sharedMessage.Value == movementText)
+            if (hudMessage.Value == movementText)
             {
-                sharedMessage.Reset();
+                hudMessage.Value = string.Empty;
             }
         }
     }

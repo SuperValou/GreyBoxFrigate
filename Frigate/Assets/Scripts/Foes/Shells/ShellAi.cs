@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Foes.ArtificialIntelligences;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.Players;
 using Assets.Scripts.Utilities;
 using Assets.Scripts.Weaponry.Projectiles;
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Foes.Shells
         public ProjectileEmitter laserWallEmitter;
 
         [Header("References")]
-        public PlayerSharedData playerProxy;
+        public PersistentVector3 targetPosition;
 
 
         // -- Class
@@ -87,8 +88,8 @@ namespace Assets.Scripts.Foes.Shells
 
         public void IdleUpdate()
         {
-            // Rotate towards player
-            Vector3 targetDirection = playerProxy.Position - this.transform.position;
+            // Rotate towards target
+            Vector3 targetDirection = targetPosition.Value - this.transform.position;
             Vector3 projectedTargetDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
             Quaternion fullRotation = Quaternion.LookRotation(projectedTargetDirection, Vector3.up);
             

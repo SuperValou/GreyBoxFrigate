@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.CrossSceneData;
+﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.TypewriterEffects;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace Assets.Scripts.Huds
         public TypewriterAnimator typewriterAnimator;
 
         [Header("References")]
-        public SharedString message;
+        public PersistentString message;
 
         // -- Class
 

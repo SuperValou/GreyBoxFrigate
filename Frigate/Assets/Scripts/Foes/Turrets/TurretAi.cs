@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Assets.Scripts.Foes.ArtificialIntelligences.TargetTracking;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.Players;
 using Assets.Scripts.Weaponry.Projectiles;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace Assets.Scripts.Foes.Turrets
         public ProjectileEmitter projectileEmitter;
 
         [Header("References")]
-        public PlayerSharedData playerProxy;
+        public PersistentVector3 targetPosition;
 
 
         // -- Class

@@ -13,18 +13,20 @@ namespace Assets.Scripts.Environments
         [Tooltip("Number of times it can be interacted with. Set to zero or less to have no limit.")]
         public int maxInteraction = 0;
         
-        [SerializeField]
-        private bool _state = false;
-
         [Header("Events")]
-        public UnityEvent onStart;
         public UnityEvent onTurnedOn;
         public UnityEvent onTurnedOff;
         public UnityEvent onToggle;
 
         // -- Class
 
-        private bool _hasMaxInteractions;
+        [Header("Debug")]
+        [SerializeField]
+        private bool _state = false;
+
+        [SerializeField]
+        private int _interactionCount = 0;
+        
         private VulnerableCollider _vulnerableCollider;
 
         public bool IsTurnedOn => _state;
@@ -32,8 +34,6 @@ namespace Assets.Scripts.Environments
 
         void Start()
         {
-            _hasMaxInteractions = maxInteraction > 0;
-
             _vulnerableCollider = this.GetComponentInChildren<VulnerableCollider>();
             if (_vulnerableCollider == null)
             {
@@ -42,8 +42,6 @@ namespace Assets.Scripts.Environments
             }
 
             _vulnerableCollider.Hit += OnHit;
-
-            onStart.Invoke();
         }
 
         public void Toggle()
@@ -60,13 +58,14 @@ namespace Assets.Scripts.Environments
                 onTurnedOff.Invoke();
             }
 
-            if (!_hasMaxInteractions)
+            if (maxInteraction <= 0)
             {
+                // no interacting limit
                 return;
             }
 
-            maxInteraction--;
-            if (maxInteraction <= 0)
+            _interactionCount++;
+            if (_interactionCount >= maxInteraction)
             {
                 _vulnerableCollider.Hit -= OnHit;
             }

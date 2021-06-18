@@ -10,9 +10,8 @@ namespace Assets.Scripts.Environments
         private const string OpenAnimTrigger = "Open";
         private const string CloseAnimTrigger = "Close";
 
-        protected override void Start()
+        void Start()
         {
-            base.Start();
             _animator = this.GetOrThrow<Animator>();
         }
 

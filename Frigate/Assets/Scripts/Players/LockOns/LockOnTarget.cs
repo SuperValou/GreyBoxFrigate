@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.CrossSceneData;
+﻿using Assets.Scripts.PersistentData;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.LockOns

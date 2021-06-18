@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.CrossSceneData;
+using Assets.Scripts.PersistentData;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.LockOns

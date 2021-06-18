@@ -7,9 +7,6 @@ namespace Assets.Scripts.Environments
     {
         // -- Editor
 
-        [SerializeField]
-        private int _currentCount = 0;
-
         [Header("Values")]
         [Tooltip("Count to reach before raising the event.")]
         public int countToReach;
@@ -21,6 +18,10 @@ namespace Assets.Scripts.Environments
         public UnityEvent onCountReached;
 
         // -- Class
+
+        [Header("Debug")]
+        [SerializeField]
+        private int _currentCount = 0;
 
         private bool _locked;
 
