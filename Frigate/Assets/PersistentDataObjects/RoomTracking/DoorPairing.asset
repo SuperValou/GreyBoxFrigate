@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef64663c991423647a0bfc5d0c390d6b, type: 3}
-  m_Name: PlayerSharedData
+  m_Script: {fileID: 11500000, guid: d7018bd0a18382f49b70a0691426de40, type: 3}
+  m_Name: DoorPairing
   m_EditorClassIdentifier: 
-  _isInvulnerable: 0
-  _position: {x: 0, y: 0, z: 0}
+  _debug: []

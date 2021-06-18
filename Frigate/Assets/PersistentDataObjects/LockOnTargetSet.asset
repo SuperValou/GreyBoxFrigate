@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06352af3946ce0e4caddf3d8dde1c31a, type: 3}
-  m_Name: LockOnTargetSharedSet
+  m_Name: LockOnTargetSet
   m_EditorClassIdentifier: 
