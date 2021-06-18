@@ -139,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75b2eb97d7ddb44287fdfa51eaa7b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 5
+  _roomOnTheOtherSide: -1
+  _state: 0
   triggeringTag: Player
-  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
+  doorPairing: {fileID: 11400000, guid: 28828a56e6dc6604b8aecea814cf3811, type: 2}
 --- !u!95 &7596392582645291027
 Animator:
   serializedVersion: 3
