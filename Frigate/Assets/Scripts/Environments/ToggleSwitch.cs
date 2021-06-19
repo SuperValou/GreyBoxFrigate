@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Damages;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,15 +23,15 @@ namespace Assets.Scripts.Environments
 
         [Header("Debug")]
         [SerializeField]
-        private bool _state = false;
+        private PersistentBool _state;
 
         [SerializeField]
         private int _interactionCount = 0;
         
         private VulnerableCollider _vulnerableCollider;
 
-        public bool IsTurnedOn => _state;
-        public bool IsTurnedOff => !_state;
+        public bool IsTurnedOn => _state.Value;
+        public bool IsTurnedOff => !_state.Value;
 
         void Start()
         {
@@ -46,7 +47,7 @@ namespace Assets.Scripts.Environments
 
         public void Toggle()
         {
-            _state = !_state;
+            _state.Value = !_state.Value;
             onToggle.Invoke();
 
             if (_state)
