@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.CrossSceneData;
+﻿using Assets.Scripts.PersistentData;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.LockOns
@@ -7,7 +7,7 @@ namespace Assets.Scripts.Players.LockOns
     {
         // -- Editor
 
-        public LockOnTargetSharedSet lockOnSet;
+        public LockOnTargetSet lockOnSet;
 
         // -- Class
 

@@ -19,6 +19,8 @@ namespace Assets.Scripts.Editor.Gizmos.Types
 
         private readonly ICollection<FieldInfo> _unityEventFields;
 
+        private readonly Dictionary<Vector3, string> _drawnLabels = new Dictionary<Vector3, string>();
+
         protected ObjectGizmo()
         {
             var type = typeof(TMonoBehaviour);
@@ -26,16 +28,25 @@ namespace Assets.Scripts.Editor.Gizmos.Types
             _unityEventFields = fields.Where(f => f.FieldType == typeof(UnityEvent)).ToList();
         }
 
-        public virtual void DrawGizmo(TMonoBehaviour unityEventOwner, GizmoType gizmoType)
+        public virtual void DrawGizmo(TMonoBehaviour gameObject, GizmoType gizmoType)
         {
             var camPosition = SceneView.lastActiveSceneView.camera.transform.position;
-            var objectSquaredDistance = unityEventOwner.transform.position - camPosition;
+            var objectSquaredDistance = gameObject.transform.position - camPosition;
             if (objectSquaredDistance.sqrMagnitude > MaxSquaredRenderDistance)
             {
+                // Camera is too far to display any gizmo related to the owner
                 return;
             }
 
-            // Unity event links
+            DrawUnityEventLinks(gameObject, gizmoType);
+        }
+
+        /// <summary>
+        /// Draw a line from the owner to the target with the name of the method.
+        /// </summary>
+        private void DrawUnityEventLinks(TMonoBehaviour unityEventOwner, GizmoType gizmoType)
+        {
+            // Set colors
             Color color;
             if (gizmoType.HasFlag(GizmoType.Selected))
             {
@@ -55,50 +66,79 @@ namespace Assets.Scripts.Editor.Gizmos.Types
                 }
             };
 
+            // Compute positions of line and label
+            _drawnLabels.Clear();
+
             Vector3 sourcePostion = unityEventOwner.transform.position;
 
             foreach (var unityEventField in _unityEventFields)
             {
                 var unityEvent = (UnityEvent) unityEventField.GetValue(unityEventOwner);
 
-                int count = unityEvent.GetPersistentEventCount();
+                int targetCount = unityEvent.GetPersistentEventCount();
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < targetCount; i++)
                 {
-                    var obj = unityEvent.GetPersistentTarget(i);
+                    var targetObject = unityEvent.GetPersistentTarget(i);
+
                     var methodName = unityEvent.GetPersistentMethodName(i);
 
                     Vector3 targetPosition;
 
-                    if (obj is Component component)
+                    GameObject targetGameObject = targetObject as GameObject;
+                    if (targetObject is Component component)
                     {
-                        if (component.gameObject == unityEventOwner.gameObject)
+                        targetGameObject = component.gameObject;
+                    }
+
+                    if (targetGameObject != null)
+                    {
+                        if (targetGameObject == unityEventOwner.gameObject)
                         {
-                            targetPosition = unityEventOwner.transform.position - Vector3.up;
-                            Handles.Label(targetPosition, "(itself)", labelStyle);
+                            // gameObject is calling a method on itself
+                            targetPosition = unityEventOwner.transform.position + Vector3.down;
+                            DrawLabel(targetPosition, "[itself]", labelStyle, Vector3.down);
                         }
                         else
                         {
-                            targetPosition = component.transform.position;
-                            if ((targetPosition - sourcePostion).sqrMagnitude < MinSquaredDistance)
-                            {
-                                targetPosition = sourcePostion + Vector3.up + Vector3.right;
-                            }
+                            targetPosition = targetGameObject.transform.position;
                         }
                     }
                     else
                     {
+                        // target is some unhandled Unity Object
                         targetPosition = unityEventOwner.transform.position + Vector3.up * 2;
-                        Handles.Label(targetPosition, obj.name, labelStyle);
+                        string targetName = $"[{targetObject.name} ({targetObject.GetType().Name})]";
+                        DrawLabel(targetPosition, targetName, labelStyle, Vector3.up);
                     }
 
                     UnityEngine.Gizmos.DrawLine(sourcePostion, targetPosition);
 
                     string label = $"{unityEventField.Name}->{methodName}";
-                    Vector3 labelPosition = (sourcePostion + targetPosition) / 2f + (i * StackedLabelOffset) * Vector3.down;
-                    Handles.Label(labelPosition, label, labelStyle);
+                    Vector3 labelPosition = (sourcePostion + targetPosition) / 2f;
+                    DrawLabel(labelPosition, label, labelStyle, Vector3.up);
                 }
             }
+        }
+
+        private void DrawLabel(Vector3 labelPosition, string label, GUIStyle style, Vector3 stackDirection)
+        {
+            if (_drawnLabels.ContainsKey(labelPosition))
+            {
+                if (_drawnLabels[labelPosition] == label)
+                {
+                    // do not draw same label at the same position twice
+                    return;
+                }
+
+                // offset the position to avoid overlapping an existing label
+                labelPosition = labelPosition + stackDirection.normalized * StackedLabelOffset;
+                DrawLabel(labelPosition, label, style, stackDirection);
+                return;
+            }
+
+            _drawnLabels[labelPosition] = label;
+            Handles.Label(labelPosition, label, style);
         }
     }
 }

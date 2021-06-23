@@ -13,6 +13,11 @@ namespace Assets.Scripts.Editor.Gizmos.Types
 
         public override void DrawGizmo(ToggleSwitch toggleSwitch, GizmoType gizmoType)
         {
+            if (toggleSwitch == null)
+            {
+                return;
+            }
+
             var position = toggleSwitch.transform.position + _iconOffset;
             string iconName = toggleSwitch.IsTurnedOn ? OnIconName : OffIconName;
             UnityEngine.Gizmos.DrawIcon(position, iconName, allowScaling: true);

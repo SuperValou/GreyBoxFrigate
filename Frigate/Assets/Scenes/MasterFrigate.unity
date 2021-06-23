@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 454769215}
   - component: {fileID: 454769216}
   m_Layer: 0
-  m_Name: RoomManager
+  m_Name: RoomLoadingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLoadedRooms: 2
-  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
-  playerCurrentRoom: {fileID: 11400000, guid: 460e0dcf04a17414f8c6c91375f4eaa6, type: 2}
+  doorPairing: {fileID: 11400000, guid: 28828a56e6dc6604b8aecea814cf3811, type: 2}
+  playerCurrentRoomId: {fileID: 11400000, guid: b4582a9747ba69c499737303029c6fc8,
+    type: 2}
   sceneLoadingManager: {fileID: 946106972}
 --- !u!1 &508439171
 GameObject:
@@ -335,6 +336,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964391eaeb8501943b3db46e4de0853c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1580569671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580569672}
+  - component: {fileID: 1580569673}
+  m_Layer: 0
+  m_Name: PlayerRoomTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1580569672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580569671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2069558901}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580569673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580569671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5dedd417b6c6784ab7cf3d4e1a4ad05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPairing: {fileID: 11400000, guid: 28828a56e6dc6604b8aecea814cf3811, type: 2}
+  playerCurrentRoomId: {fileID: 11400000, guid: b4582a9747ba69c499737303029c6fc8,
+    type: 2}
 --- !u!1 &2069558900
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +411,7 @@ Transform:
   m_Children:
   - {fileID: 454769215}
   - {fileID: 946106971}
+  - {fileID: 1580569672}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

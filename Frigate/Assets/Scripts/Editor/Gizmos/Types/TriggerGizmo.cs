@@ -10,6 +10,11 @@ namespace Assets.Scripts.Editor.Gizmos.Types
 
         public override void DrawGizmo(Trigger trigger, GizmoType gizmoType)
         {
+            if (trigger == null)
+            {
+                return;
+            }
+
             UnityEngine.Gizmos.color = Color;
 
             var col = trigger.GetComponent<Collider>();

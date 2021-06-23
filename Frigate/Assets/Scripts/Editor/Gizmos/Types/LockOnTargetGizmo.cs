@@ -9,6 +9,11 @@ namespace Assets.Scripts.Editor.Gizmos.Types
         
         public override void DrawGizmo(LockOnTarget target, GizmoType gizmoType)
         {
+            if (target == null)
+            {
+                return;
+            }
+
             UnityEngine.Gizmos.DrawIcon(target.transform.position, IconName, allowScaling: true);
 
             base.DrawGizmo(target, gizmoType);

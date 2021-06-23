@@ -9,6 +9,11 @@ namespace Assets.Scripts.Editor.Gizmos.Types
         
         public override void DrawGizmo(Counter counter, GizmoType gizmoType)
         {
+            if (counter == null)
+            {
+                return;
+            }
+
             UnityEngine.Gizmos.DrawIcon(counter.transform.position, IconName, allowScaling: true);
 
             base.DrawGizmo(counter, gizmoType);

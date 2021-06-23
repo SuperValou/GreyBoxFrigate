@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.Environments
@@ -7,35 +8,47 @@ namespace Assets.Scripts.Environments
     {
         // -- Editor
 
-        [Header("Values")]
-        public Color enabledColor = Color.green;
+        [Header("Values")] public Color enabledColor = Color.green;
         public Color disabledColor = Color.red;
 
-        [Header("Parts")]
-        public MeshRenderer colorRenderer;
+        [Header("Parts")] public MeshRenderer colorRenderer;
 
         // -- Class
 
-        public void Init(bool initialState)
+        [SerializeField]
+        private PersistentBool _state = default;
+
+        void Start()
         {
-            if (initialState)
+            _state.ValueChanged += OnValueChanged;
+            OnValueChanged(_state.Value);
+        }
+
+        private void OnValueChanged(bool value)
+        {
+            if (value)
             {
-                TurnOn();
+                DisplayOn();
             }
             else
             {
-                TurnOff();
+                DisplayOff();
             }
         }
 
-        public void TurnOn()
+        public void DisplayOn()
         {
             colorRenderer.material.color = enabledColor;
         }
 
-        public void TurnOff()
+        public void DisplayOff()
         {
             colorRenderer.material.color = disabledColor;
+        }
+
+        void OnDestroy()
+        {
+            _state.ValueChanged -= OnValueChanged;
         }
     }
 }
