@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using Assets.Scripts.LoadingSystems.PersistentVariables;
-using Assets.Scripts.Players;
 using UnityEngine;
 
 namespace Assets.Scripts.SceneScripts
 {
-    public class TutoRoomScript : MonoBehaviour
+    public class TutoScript : MonoBehaviour
     {
         // -- Editor
 

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Players.LockOns
     {
         // -- Editor
 
-        public LockOnTargetSharedSet lockOnSet;
+        public LockOnTargetSet lockOnSet;
 
         // -- Class
 

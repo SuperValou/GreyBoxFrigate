@@ -33,7 +33,7 @@ namespace Assets.Scripts.Players.LockOns
         public Camera eye;
 
         [Tooltip("Set of targetable objects.")]
-        public LockOnTargetSharedSet lockOnTargetSet;
+        public LockOnTargetSet lockOnTargetSet;
 
         [Tooltip(nameof(ILockOnNotifiable) + " that should be notified when lock/unlock events are occurring.")]
         public MonoBehaviour[] lockOnNotifiables;

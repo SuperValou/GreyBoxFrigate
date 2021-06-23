@@ -23,7 +23,7 @@ namespace Assets.Scripts.Environments
 
         [Header("Debug")]
         [SerializeField]
-        private PersistentBool _state;
+        private PersistentBool _state = default ;
 
         [SerializeField]
         private int _interactionCount = 0;

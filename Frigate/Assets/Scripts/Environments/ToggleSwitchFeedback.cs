@@ -15,12 +15,13 @@ namespace Assets.Scripts.Environments
 
         // -- Class
 
-        [SerializeField] private PersistentBool _state;
+        [SerializeField]
+        private PersistentBool _state = default;
 
         void Start()
         {
-            OnValueChanged(_state.Value);
             _state.ValueChanged += OnValueChanged;
+            OnValueChanged(_state.Value);
         }
 
         private void OnValueChanged(bool value)
