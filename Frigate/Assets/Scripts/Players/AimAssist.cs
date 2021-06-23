@@ -20,18 +20,22 @@ namespace Assets.Scripts.Players
         void Update()
         {
             Ray ray = eye.ViewportPointToRay(_viewportPoint);
-            
+            //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.blue);
+
             if (Physics.Raycast(ray, out RaycastHit raycastHit, maxDistance, applicableLayers))
             {
-                arm.transform.LookAt(raycastHit.point);
+                arm.LookAt(raycastHit.point);
+                //Debug.DrawLine(arm.position, raycastHit.point, Color.red);
+                //if (Input.GetKeyDown(KeyCode.K))
+                //{
+                //    Debug.LogWarning(raycastHit.transform.name);
+                //}
             }
             else
             {
-                arm.transform.LookAt(arm.transform.position + eye.transform.forward);
+                arm.LookAt(arm.position + eye.transform.forward);
+                //Debug.DrawRay(arm.position, maxDistance * arm.forward, Color.yellow);
             }
-
-            //Debug.DrawRay(eye.transform.position, maxDistance * eye.transform.forward, Color.blue);
-            //Debug.DrawRay(arm.transform.position, maxDistance * arm.transform.forward, Color.red);
         }
     }
 }

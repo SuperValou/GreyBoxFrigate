@@ -4537,7 +4537,7 @@ ParticleSystem:
     radiusScale: 0.7
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -9428,7 +9428,7 @@ ParticleSystem:
     radiusScale: 0.4
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -25682,7 +25682,7 @@ MonoBehaviour:
   maxDistance: 100
   applicableLayers:
     serializedVersion: 2
-    m_Bits: 3073
+    m_Bits: 102145
 --- !u!143 &479099070
 CharacterController:
   m_ObjectHideFlags: 0
@@ -25750,7 +25750,7 @@ MonoBehaviour:
   maxLockRange: 50
   blockingLineOfSightLayers:
     serializedVersion: 2
-    m_Bits: 33792
+    m_Bits: 34561
   eye: {fileID: 963194227}
   lockOnTargetSet: {fileID: 11400000, guid: 3ed63b834d4bbeb43b7f0ce46dbcfe61, type: 2}
   lockOnNotifiables:
@@ -34630,7 +34630,7 @@ ParticleSystem:
     radiusScale: 0.3
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -44906,7 +44906,7 @@ ParticleSystem:
     radiusScale: 0.4
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -50346,7 +50346,7 @@ ParticleSystem:
     radiusScale: 0.7
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -60063,7 +60063,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -61347,7 +61347,7 @@ GameObject:
   - component: {fileID: 1604474741}
   - component: {fileID: 1604474740}
   m_Layer: 0
-  m_Name: TipSubEmitter
+  m_Name: TrailSubEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65131,7 +65131,7 @@ ParticleSystem:
     radiusScale: 0.5
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -66591,9 +66591,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900394167}
-  - component: {fileID: 3994447418975221888}
   - component: {fileID: 3583301413128621514}
   - component: {fileID: 4847415063678335751}
+  - component: {fileID: 3994447418975221888}
   m_Layer: 0
   m_Name: PowerGun
   m_TagString: Untagged
@@ -70787,7 +70787,7 @@ ParticleSystem:
     radiusScale: 0.7
     collidesWith:
       serializedVersion: 2
-      m_Bits: 35841
+      m_Bits: 102145
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
