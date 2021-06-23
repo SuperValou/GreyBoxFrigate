@@ -4,34 +4,24 @@ using Assets.Scripts.LoadingSystems.PersistentVariables;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Environments
+namespace Assets.Scripts.Environments.Switches
 {
-    public class ToggleSwitch : MonoBehaviour
+    public class OneWaySwitch : MonoBehaviour
     {
         // -- Editor
 
-        [Header("Values")]
-        [Tooltip("Number of times it can be interacted with. Set to zero or less to have no limit.")]
-        public int maxInteraction = 0;
-        
         [Header("Events")]
-        public UnityEvent onTurnedOn;
-        public UnityEvent onTurnedOff;
-        public UnityEvent onToggle;
+        public UnityEvent onActivated;
 
         // -- Class
 
         [Header("Debug")]
         [SerializeField]
-        private PersistentBool _state = default ;
+        private PersistentBool _state = default;
 
-        [SerializeField]
-        private int _interactionCount = 0;
-        
         private VulnerableCollider _vulnerableCollider;
 
-        public bool IsTurnedOn => _state.Value;
-        public bool IsTurnedOff => !_state.Value;
+        public bool IsActivated => _state.Value;
 
         void Start()
         {
@@ -42,39 +32,25 @@ namespace Assets.Scripts.Environments
                                             $"It makes it unable to be interacted with. Did you forget to add a {nameof(VulnerableCollider)} to one of its children?");
             }
 
-            _vulnerableCollider.Hit += OnHit;
-        }
-
-        public void Toggle()
-        {
-            _state.Value = !_state.Value;
-            onToggle.Invoke();
-
-            if (_state)
+            if (_state.Value)
             {
-                onTurnedOn.Invoke();
-            }
-            else
-            {
-                onTurnedOff.Invoke();
-            }
-
-            if (maxInteraction <= 0)
-            {
-                // no interacting limit
+                // switch is already activated
                 return;
             }
 
-            _interactionCount++;
-            if (_interactionCount >= maxInteraction)
-            {
-                _vulnerableCollider.Hit -= OnHit;
-            }
+            _vulnerableCollider.Hit += OnHit;
+        }
+
+        public void Activate()
+        {
+            _state.Value = true;
+            _vulnerableCollider.Hit -= OnHit;
+            onActivated.Invoke();
         }
 
         private void OnHit(VulnerableCollider vulnerableCollider, DamageData damageData, MonoBehaviour damager)
         {
-            Toggle();
+            Activate();
         }
 
         void OnDestroy()

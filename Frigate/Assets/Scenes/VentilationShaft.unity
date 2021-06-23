@@ -2546,11 +2546,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 303926095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e973b1867acf34ab5aeaf27cfc44e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 23d4d2effebfc8d4888ab0d0c5c5404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInteraction: 1
-  onTurnedOn:
+  onActivated:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 308620731}
@@ -2564,14 +2563,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onTurnedOff:
-    m_PersistentCalls:
-      m_Calls: []
-  onToggle:
-    m_PersistentCalls:
-      m_Calls: []
   _state: {fileID: 11400000, guid: 9333b009eb6ad4f4cb9eec251d830d4d, type: 2}
-  _interactionCount: 0
 --- !u!114 &303926099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,11 +3860,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 955390854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e973b1867acf34ab5aeaf27cfc44e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 23d4d2effebfc8d4888ab0d0c5c5404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInteraction: 1
-  onTurnedOn:
+  onActivated:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 308620731}
@@ -3886,14 +3877,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onTurnedOff:
-    m_PersistentCalls:
-      m_Calls: []
-  onToggle:
-    m_PersistentCalls:
-      m_Calls: []
   _state: {fileID: 11400000, guid: 554b3848682149d43a2d0dfdeb2ab43b, type: 2}
-  _interactionCount: 0
 --- !u!114 &955390858
 MonoBehaviour:
   m_ObjectHideFlags: 0

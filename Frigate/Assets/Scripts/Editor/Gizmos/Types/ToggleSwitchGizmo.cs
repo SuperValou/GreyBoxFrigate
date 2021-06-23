@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Environments;
+using Assets.Scripts.Environments.Switches;
 using UnityEditor;
 using UnityEngine;
 

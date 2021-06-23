@@ -1,10 +1,9 @@
 ﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
-using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts.Environments
+namespace Assets.Scripts.Environments.Switches
 {
-    public class ToggleSwitchFeedback : MonoBehaviour
+    public class SwitchStateFeedback : MonoBehaviour
     {
         // -- Editor
 

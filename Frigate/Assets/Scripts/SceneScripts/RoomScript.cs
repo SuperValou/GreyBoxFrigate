@@ -16,7 +16,7 @@ namespace Assets.Scripts.SceneScripts
 
         [Header("Debug")]
         [SerializeField]
-        private PersistentInt _visitCount;
+        private PersistentInt _visitCount = default;
 
         private SceneId _roomId;
 
