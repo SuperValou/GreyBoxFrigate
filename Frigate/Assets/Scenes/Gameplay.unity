@@ -45940,7 +45940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613c53a3de8847447b14af25a03b0ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerParticle: 15
+  damagePerParticle: 20
   projectileImpact: {fileID: 1538557628}
 --- !u!1 &1050427340
 GameObject:
