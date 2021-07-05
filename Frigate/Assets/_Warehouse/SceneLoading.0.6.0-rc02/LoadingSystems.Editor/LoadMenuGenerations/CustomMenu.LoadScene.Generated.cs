@@ -40,6 +40,15 @@ namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations
                 EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
             }
         }
+		[MenuItem("SceneLoading/Load Scene/Room/Load 04-EvacuationRoom")]
+        public static void LoadScene__04_EvacuationRoom()
+        {
+            string relativeScenePath = @"Assets/Scenes/04-EvacuationRoom.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
 		[MenuItem("SceneLoading/Load Scene/Gameplay/Load Gameplay")]
         public static void LoadScene_Gameplay()
         {

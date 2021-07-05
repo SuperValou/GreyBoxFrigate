@@ -17,6 +17,7 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 			{SceneId._01_DockingBay, new SceneInfo(SceneId._01_DockingBay, "01-DockingBay", SceneType.Room)},
 			{SceneId._02_AirLockAccess, new SceneInfo(SceneId._02_AirLockAccess, "02-AirLockAccess", SceneType.Room)},
 			{SceneId._03_AirLock, new SceneInfo(SceneId._03_AirLock, "03-AirLock", SceneType.Room)},
+			{SceneId._04_EvacuationRoom, new SceneInfo(SceneId._04_EvacuationRoom, "04-EvacuationRoom", SceneType.Room)},
 			{SceneId.Gameplay, new SceneInfo(SceneId.Gameplay, "Gameplay", SceneType.Gameplay)},
 			{SceneId.MainMenu, new SceneInfo(SceneId.MainMenu, "MainMenu", SceneType.Screen)},
 			{SceneId.MasterFrigate, new SceneInfo(SceneId.MasterFrigate, "MasterFrigate", SceneType.Master)},

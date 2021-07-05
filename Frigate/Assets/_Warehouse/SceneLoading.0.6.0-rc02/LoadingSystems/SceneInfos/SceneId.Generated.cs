@@ -19,6 +19,7 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 		_02_AirLockAccess = 20002,
 		_03_AirLock = 20003,
 		VentilationShaft = 20004,
+		_04_EvacuationRoom = 20005,
 		MainMenu = 30001,
 		
     }
