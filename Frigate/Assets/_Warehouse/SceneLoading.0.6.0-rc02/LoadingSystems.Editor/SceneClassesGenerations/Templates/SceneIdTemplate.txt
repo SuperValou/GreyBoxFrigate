@@ -8,9 +8,12 @@
 //------------------------------------------------------------------------------
 namespace <$var:namespace>
 {
-    public enum SceneType
+    /// <summary>
+    /// Enumeration identifying scenes in the system.
+    /// </summary>
+    public enum SceneId
     {
-		<$subtemplate:enumMemberTemplate><$var:sceneTypeMemberName> = <$var:sceneTypeMemberValue>,
+		<$subtemplate:enumMemberTemplate><$var:sceneEnumMemberName> = <$var:sceneEnumMemberValue>,
 		<$endsubtemplate>
     }
 }

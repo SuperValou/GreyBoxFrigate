@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations
 {
     public class SceneDataGatherer
     {
-        private const string SceneTypeLabelPrefix = "Scene-";
+        public const string SceneTypeLabelPrefix = "Scene-";
         
         private readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
         
