@@ -71,9 +71,10 @@ Factory/Models/**/*.fbx
 Factory/Models/**/*.blend
 *.blend1
 
-Factory/PreIntegration/Library/
-Factory/PreIntegration/Temp/
-Factory/PreIntegration/[Oo]bj/
+# Factory/PreIntegration/Library/
+# Factory/PreIntegration/Temp/
+# Factory/PreIntegration/[Oo]bj/
+Factory/PreIntegration/
 
 Concepts/
 Builds/
