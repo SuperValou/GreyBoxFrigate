@@ -3984,7 +3984,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15536
+  m_Name: pb_Mesh30832
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4574,7 +4574,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15476
+  m_Name: pb_Mesh30772
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5048,7 +5048,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15458
+  m_Name: pb_Mesh30754
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5211,7 +5211,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15490
+  m_Name: pb_Mesh30786
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5411,6 +5411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicDoor to 02-AirLockAccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596392582645291024, guid: 5df1343f19f1ebb438ccb134acd7ebed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7596392582645291025, guid: 5df1343f19f1ebb438ccb134acd7ebed,
         type: 3}
