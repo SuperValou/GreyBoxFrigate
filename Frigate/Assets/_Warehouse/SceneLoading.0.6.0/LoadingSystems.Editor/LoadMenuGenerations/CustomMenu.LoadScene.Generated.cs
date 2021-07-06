@@ -13,5 +13,78 @@ namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations
 {
     public static partial class CustomMenu
     {
+        [MenuItem("SceneLoading/Load Scene/Room/Load 01-DockingBay")]
+        public static void LoadScene__01_DockingBay()
+        {
+            string relativeScenePath = @"Assets/Scenes/01-DockingBay.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Room/Load 02-AirLockAccess")]
+        public static void LoadScene__02_AirLockAccess()
+        {
+            string relativeScenePath = @"Assets/Scenes/02-AirLockAccess.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Room/Load 03-AirLock")]
+        public static void LoadScene__03_AirLock()
+        {
+            string relativeScenePath = @"Assets/Scenes/03-AirLock.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Room/Load 04-EvacuationRoom")]
+        public static void LoadScene__04_EvacuationRoom()
+        {
+            string relativeScenePath = @"Assets/Scenes/04-EvacuationRoom.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Gameplay/Load Gameplay")]
+        public static void LoadScene_Gameplay()
+        {
+            string relativeScenePath = @"Assets/Scenes/Gameplay.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Screen/Load MainMenu")]
+        public static void LoadScene_MainMenu()
+        {
+            string relativeScenePath = @"Assets/Scenes/MainMenu.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Master/Load MasterFrigate")]
+        public static void LoadScene_MasterFrigate()
+        {
+            string relativeScenePath = @"Assets/Scenes/MasterFrigate.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Single);
+            }
+        }
+		[MenuItem("SceneLoading/Load Scene/Room/Load VentilationShaft")]
+        public static void LoadScene_VentilationShaft()
+        {
+            string relativeScenePath = @"Assets/Scenes/VentilationShaft.unity";
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(relativeScenePath, OpenSceneMode.Additive);
+            }
+        }
+		
     }
 }

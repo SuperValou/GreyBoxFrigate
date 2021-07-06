@@ -7,7 +7,7 @@ namespace Assets.Scripts.SceneScripts.RoomConfigurations
         // -- Inspector
 
         [SerializeField]
-        private string _configName;
+        private string _configName = string.Empty;
         
         // -- Class
 
