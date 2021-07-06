@@ -62,3 +62,20 @@ crashlytics-build.properties
 Builds/
 
 Frigate/Recordings/
+
+
+# Factory folders
+
+Factory/_Tools/
+Factory/Models/**/*.fbx
+Factory/Models/**/*.blend
+*.blend1
+
+Factory/PreIntegration/Library/
+Factory/PreIntegration/Temp/
+Factory/PreIntegration/[Oo]bj/
+
+Concepts/
+Builds/
+
+*/[Ll]ibrary-*/
